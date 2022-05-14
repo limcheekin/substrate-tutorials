@@ -1,0 +1,37 @@
+[package]
+name = "pallet-sum-storage-rpc"
+version = "4.0.0-dev"
+edition = "2021"
+authors = ['Substrate DevHub <https://github.com/substrate-developer-hub>']
+repository = 'https://github.com/substrate-developer-hub/recipes'
+description = "A pallet that demonstrates simple RPC for summing numbers"
+license = "GPL-3.0-or-later"
+
+[dependencies]
+codec = { package = "parity-scale-codec", version = "3.0.0", default-features = false, features = [
+	"derive",
+] }
+scale-info = { version = "2.0.1", default-features = false, features = ["derive"] }
+jsonrpc-core = "18.0.0"
+jsonrpc-core-client = "18.0.0"
+jsonrpc-derive = "18.0.0"
+serde = { version = "1.0.137", features = ["derive"], optional = true }
+
+# Substrate packages
+
+sp-api = { version = "4.0.0-dev", default-features = false, git = "https://github.com/paritytech/substrate.git", branch = "polkadot-v0.9.20" }
+sp-blockchain = { version = "4.0.0-dev", default-features = false, git = "https://github.com/paritytech/substrate.git", branch = "polkadot-v0.9.20" }
+sp-rpc = { default-features = false, version = "6.0.0", git = "https://github.com/paritytech/substrate.git", branch = "polkadot-v0.9.20" }
+sp-runtime = { default-features = false, version = "6.0.0", git = "https://github.com/paritytech/substrate.git", branch = "polkadot-v0.9.20" } 
+
+# local packages
+pallet-sum-storage-runtime-api = { version = "4.0.0-dev", path = "../runtime-api", default-features = false }
+
+[features]
+default = ["std"]
+std = [
+  "serde",
+  "sp-api/std",
+  "sp-runtime/std",
+  "pallet-sum-storage-runtime-api/std"
+]

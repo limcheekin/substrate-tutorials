@@ -8,6 +8,7 @@
 use std::sync::Arc;
 
 use node_template_runtime::{opaque::Block, AccountId, Balance, Index};
+use pallet_sum_storage_runtime_api::SumStorageApi as SumStorageRuntimeApi;
 pub use sc_rpc_api::DenyUnsafe;
 use sc_transaction_pool_api::TransactionPool;
 use sp_api::ProvideRuntimeApi;
@@ -33,10 +34,12 @@ where
 	C::Api: substrate_frame_rpc_system::AccountNonceApi<Block, AccountId, Index>,
 	C::Api: pallet_transaction_payment_rpc::TransactionPaymentRuntimeApi<Block, Balance>,
 	C::Api: BlockBuilder<Block>,
+	C::Api: SumStorageRuntimeApi<Block>,
 	P: TransactionPool + 'static,
 {
 	use pallet_transaction_payment_rpc::{TransactionPayment, TransactionPaymentApi};
 	use substrate_frame_rpc_system::{FullSystem, SystemApi};
+	use pallet_sum_storage_rpc::{SumStorage, SumStorageApi};
 
 	let mut io = jsonrpc_core::IoHandler::default();
 	let FullDeps { client, pool, deny_unsafe } = deps;
@@ -49,6 +52,8 @@ where
 	// `YourRpcStruct` should have a reference to a client, which is needed
 	// to call into the runtime.
 	// `io.extend_with(YourRpcTrait::to_delegate(YourRpcStruct::new(ReferenceToClient, ...)));`
+
+	io.extend_with(SumStorageApi::to_delegate(SumStorage::new(client.clone())));
 
 	io
 }

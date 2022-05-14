@@ -3756,6 +3756,8 @@ dependencies = [
  "frame-system",
  "jsonrpc-core",
  "node-template-runtime",
+ "pallet-sum-storage-rpc",
+ "pallet-sum-storage-runtime-api",
  "pallet-transaction-payment",
  "pallet-transaction-payment-rpc",
  "sc-basic-authorship",
@@ -3807,6 +3809,7 @@ dependencies = [
  "pallet-nicks",
  "pallet-randomness-collective-flip",
  "pallet-sudo",
+ "pallet-sum-storage",
  "pallet-template",
  "pallet-timestamp",
  "pallet-transaction-payment",
@@ -4167,6 +4170,45 @@ dependencies = [
  "sp-io",
  "sp-runtime",
  "sp-std",
+]
+
+[[package]]
+name = "pallet-sum-storage"
+version = "4.0.0-dev"
+dependencies = [
+ "frame-benchmarking",
+ "frame-support",
+ "frame-system",
+ "parity-scale-codec",
+ "scale-info",
+ "sp-core",
+ "sp-io",
+ "sp-runtime",
+]
+
+[[package]]
+name = "pallet-sum-storage-rpc"
+version = "4.0.0-dev"
+dependencies = [
+ "jsonrpc-core",
+ "jsonrpc-core-client",
+ "jsonrpc-derive",
+ "pallet-sum-storage-runtime-api",
+ "parity-scale-codec",
+ "scale-info",
+ "serde",
+ "sp-api",
+ "sp-blockchain",
+ "sp-rpc",
+ "sp-runtime",
+]
+
+[[package]]
+name = "pallet-sum-storage-runtime-api"
+version = "4.0.0-dev"
+dependencies = [
+ "serde_json",
+ "sp-api",
 ]
 
 [[package]]
