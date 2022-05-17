@@ -51,8 +51,8 @@ sp-block-builder = { version = "4.0.0-dev", git = "https://github.com/paritytech
 sc-basic-authorship = { version = "0.10.0-dev", git = "https://github.com/paritytech/substrate.git", branch = "polkadot-v0.9.20" }
 substrate-frame-rpc-system = { version = "4.0.0-dev", git = "https://github.com/paritytech/substrate.git", branch = "polkadot-v0.9.20" }
 pallet-transaction-payment-rpc = { version = "4.0.0-dev", git = "https://github.com/paritytech/substrate.git", branch = "polkadot-v0.9.20" }
-pallet-sum-storage-rpc = { path = "../pallets/sum-storage/rpc" }
-pallet-sum-storage-runtime-api = { path = "../pallets/sum-storage/runtime-api" }
+pallet-sum-storage-rpc = { default-features = false, path = "../pallets/sum-storage/rpc" }
+pallet-sum-storage-runtime-api = { default-features = false, path = "../pallets/sum-storage/runtime-api" }
 
 # These dependencies are used for runtime benchmarking
 frame-benchmarking = { version = "4.0.0-dev", git = "https://github.com/paritytech/substrate.git", branch = "polkadot-v0.9.20" }

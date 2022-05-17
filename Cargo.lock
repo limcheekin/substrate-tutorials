@@ -3810,6 +3810,7 @@ dependencies = [
  "pallet-randomness-collective-flip",
  "pallet-sudo",
  "pallet-sum-storage",
+ "pallet-sum-storage-runtime-api",
  "pallet-template",
  "pallet-timestamp",
  "pallet-transaction-payment",

@@ -304,6 +304,10 @@ impl pallet_template::Config for Runtime {
 }
 
 impl pallet_hello_substrate::Config for Runtime {}
+impl pallet_sum_storage::Config for Runtime {
+	type Event = Event;
+}
+
 
 // Create the runtime by composing the FRAME pallets that were previously configured.
 construct_runtime!(
@@ -324,6 +328,7 @@ construct_runtime!(
 		// Include the custom logic from the pallet-template in the runtime.
 		TemplateModule: pallet_template,
 		HelloSubstrate: pallet_hello_substrate,
+		SumStorage: pallet_sum_storage,
 	}
 );
 
@@ -370,6 +375,7 @@ mod benches {
 		[pallet_timestamp, Timestamp]
 		[pallet_template, TemplateModule]
 		[pallet_hello_substrate, HelloSubstrate]
+		[pallet_sum_storage, SumStorage]
 	);
 }
 
@@ -422,6 +428,16 @@ impl_runtime_apis! {
 			block_hash: <Block as BlockT>::Hash,
 		) -> TransactionValidity {
 			Executive::validate_transaction(source, tx, block_hash)
+		}
+	}
+
+	impl pallet_sum_storage_runtime_api::SumStorageApi<Block> for Runtime {
+		fn get_sum() -> u32 {
+			// This Runtime API calls into a specific pallet. Calling a pallet is a common
+			// design pattern. You can see most other APIs in this file do the same.
+			// It is also possible to write your logic right here in the runtime
+			// amalgamator file
+			SumStorage::get_sum()
 		}
 	}
 
