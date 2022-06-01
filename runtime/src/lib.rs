@@ -304,10 +304,14 @@ impl pallet_template::Config for Runtime {
 }
 
 impl pallet_hello_substrate::Config for Runtime {}
+
 impl pallet_sum_storage::Config for Runtime {
 	type Event = Event;
 }
 
+impl pallet_simple_map::Config for Runtime {
+	type Event = Event;
+}
 
 // Create the runtime by composing the FRAME pallets that were previously configured.
 construct_runtime!(
@@ -329,6 +333,7 @@ construct_runtime!(
 		TemplateModule: pallet_template,
 		HelloSubstrate: pallet_hello_substrate,
 		SumStorage: pallet_sum_storage,
+		SimpleMap: pallet_simple_map,
 	}
 );
 
@@ -376,6 +381,7 @@ mod benches {
 		[pallet_template, TemplateModule]
 		[pallet_hello_substrate, HelloSubstrate]
 		[pallet_sum_storage, SumStorage]
+		[pallet_simple_map, SimpleMap]
 	);
 }
 

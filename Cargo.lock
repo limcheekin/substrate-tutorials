@@ -3808,6 +3808,7 @@ dependencies = [
  "pallet-hello-substrate",
  "pallet-nicks",
  "pallet-randomness-collective-flip",
+ "pallet-simple-map",
  "pallet-sudo",
  "pallet-sum-storage",
  "pallet-sum-storage-runtime-api",
@@ -4157,6 +4158,20 @@ dependencies = [
  "sp-staking",
  "sp-std",
  "sp-trie",
+]
+
+[[package]]
+name = "pallet-simple-map"
+version = "3.0.0"
+dependencies = [
+ "frame-benchmarking",
+ "frame-support",
+ "frame-system",
+ "parity-scale-codec",
+ "scale-info",
+ "sp-core",
+ "sp-io",
+ "sp-runtime",
 ]
 
 [[package]]
