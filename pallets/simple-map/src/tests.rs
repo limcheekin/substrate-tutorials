@@ -11,7 +11,7 @@ fn set_works() {
 
 		let expected_event = Event::SimpleMap(pallet_simple_map::Event::EntrySet(1, 19));
 
-		assert_eq!(last_event(), expected_event);
+		System::assert_last_event(expected_event);
 	})
 }
 
@@ -33,7 +33,7 @@ fn get_works() {
 
 		let expected_event = Event::SimpleMap(pallet_simple_map::Event::EntryGot(1, 19));
 
-		assert_eq!(last_event(), expected_event);
+		System::assert_last_event(expected_event);
 
 		// Ensure storage is still set
 		assert_eq!(SimpleMap::simple_map(2), 19);
@@ -58,7 +58,7 @@ fn take_works() {
 
 		let expected_event = Event::SimpleMap(pallet_simple_map::Event::EntryTaken(2, 19));
 
-		assert_eq!(last_event(), expected_event);
+		System::assert_last_event(expected_event);
 
 		// Assert storage has returned to default value (zero)
 		assert_eq!(SimpleMap::simple_map(2), 0);
@@ -73,7 +73,7 @@ fn increase_works() {
 
 		let expected_event = Event::SimpleMap(pallet_simple_map::Event::EntryIncreased(2, 19, 21));
 
-		assert_eq!(last_event(), expected_event);
+		System::assert_last_event(expected_event);
 
 		// Assert storage map entry has been increased
 		assert_eq!(SimpleMap::simple_map(2), 21);

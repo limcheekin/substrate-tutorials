@@ -57,8 +57,3 @@ impl pallet_simple_map::Config for Test {
 pub fn new_test_ext() -> sp_io::TestExternalities {
 	system::GenesisConfig::default().build_storage::<Test>().unwrap().into()
 }
-
-// REF: https://stackoverflow.com/questions/66722979/how-to-test-events-in-substrate-3-0-0
-pub fn last_event() -> Event {
-	system::Pallet::<Test>::events().pop().expect("Event expected").event
-}
