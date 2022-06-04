@@ -313,6 +313,10 @@ impl pallet_simple_map::Config for Runtime {
 	type Event = Event;
 }
 
+impl pallet_double_map::Config for Runtime {
+	type Event = Event;
+}
+
 // Create the runtime by composing the FRAME pallets that were previously configured.
 construct_runtime!(
 	pub enum Runtime where
@@ -334,6 +338,7 @@ construct_runtime!(
 		HelloSubstrate: pallet_hello_substrate,
 		SumStorage: pallet_sum_storage,
 		SimpleMap: pallet_simple_map,
+		DoubleMap: pallet_double_map,
 	}
 );
 
@@ -382,6 +387,7 @@ mod benches {
 		[pallet_hello_substrate, HelloSubstrate]
 		[pallet_sum_storage, SumStorage]
 		[pallet_simple_map, SimpleMap]
+		[pallet_double_map, DoubleMap]
 	);
 }
 
