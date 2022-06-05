@@ -44,8 +44,9 @@ pub mod pallet {
 	pub(super) type AllMembers<T: Config> = StorageValue<_, Vec<T::AccountId>, ValueQuery>;
 
 	#[pallet::pallet]
+	#[pallet::without_storage_info]
 	#[pallet::generate_store(pub(super) trait Store)]
-	pub struct Pallet<T>(PhantomData<T>);
+	pub struct Pallet<T>(_);
 
 	#[pallet::hooks]
 	impl<T: Config> Hooks<BlockNumberFor<T>> for Pallet<T> {}
@@ -126,7 +127,7 @@ pub mod pallet {
 			);
 
 			// remove all group members from MemberScore at once
-			<MemberScore<T>>::remove_prefix(&group_id);
+			<MemberScore<T>>::remove_prefix(&group_id, None);
 
 			Self::deposit_event(Event::RemoveGroup(group_id));
 			Ok(().into())
