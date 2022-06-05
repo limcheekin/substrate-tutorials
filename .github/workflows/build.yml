@@ -50,6 +50,7 @@ jobs:
       - name: Commit node-template
         uses: EndBug/add-and-commit@v9
         with:
-          default_author: github_actions
+          author_name: github-actions
+          author_email: action@github.com
           message: 'chore: added target/release/node-template'
           add: 'target/release/node-template -f'     
