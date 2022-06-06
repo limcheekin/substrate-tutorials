@@ -14,6 +14,7 @@ pub mod pallet {
 	pub trait Config: frame_system::Config {
 		type Event: From<Event<Self>> + IsType<<Self as frame_system::Config>::Event>;
 		type MaxBytesInChannelId: Get<u32>;
+		type MaxBytesInCommonKey: Get<u32>;
 	}
 
 	#[pallet::pallet]
@@ -29,7 +30,7 @@ pub mod pallet {
 		BoundedVec<u8, T::MaxBytesInChannelId>, // channel_id
 		Blake2_128Concat,
 		T::AccountId,
-		Vec<u8>, // common_key
+		BoundedVec<u8, T::MaxBytesInCommonKey>, // common_key
 	>;
 
 	#[pallet::event]
@@ -53,7 +54,7 @@ pub mod pallet {
 		pub fn new_channel(
 			origin: OriginFor<T>,
 			channel_id: BoundedVec<u8, T::MaxBytesInChannelId>, 
-			account_common_keys: BTreeMap<T::AccountId, Vec<u8>>
+			account_common_keys: BTreeMap<T::AccountId, BoundedVec<u8, T::MaxBytesInCommonKey>>
 		) -> DispatchResultWithPostInfo {
 			let from = ensure_signed(origin)?;
 
