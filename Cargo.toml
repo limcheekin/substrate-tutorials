@@ -4,6 +4,7 @@ members = [
     "pallets/template",
     "pallets/simple-map",
     "pallets/double-map",
+    "pallets/submessage",
     "runtime",
 ]
 [profile.release]

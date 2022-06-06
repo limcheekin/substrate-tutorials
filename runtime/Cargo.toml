@@ -56,6 +56,7 @@ pallet-sum-storage = { default-features = false, path = "../pallets/sum-storage"
 pallet-sum-storage-runtime-api = { default-features = false, path = "../pallets/sum-storage/runtime-api" }
 pallet-simple-map = { default-features = false, path = "../pallets/simple-map" }
 pallet-double-map = { default-features = false, path = "../pallets/double-map" }
+pallet-submessage = { default-features = false, path = "../pallets/submessage" }
 
 [build-dependencies]
 substrate-wasm-builder = { version = "5.0.0-dev", git = "https://github.com/paritytech/substrate.git", branch = "polkadot-v0.9.20" }
