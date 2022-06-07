@@ -30,7 +30,7 @@ pub mod pallet {
 		BoundedVec<u8, T::MaxBytesInChannelId>, // channel_id
 		Blake2_128Concat,
 		T::AccountId,
-		BoundedVec<u8, T::MaxBytesInCommonKey>>, // common_key
+		BoundedVec<u8, T::MaxBytesInCommonKey>, // common_key
 		OptionQuery
 	>;
 
