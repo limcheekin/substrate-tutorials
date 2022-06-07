@@ -30,6 +30,7 @@ pub mod pallet {
 		Blake2_128Concat,
 		T::AccountId,
 		Vec<u8>, // common_key
+		OptionQuery
 	>;
 
 	#[pallet::event]
