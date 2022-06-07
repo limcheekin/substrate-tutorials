@@ -319,12 +319,15 @@ impl pallet_double_map::Config for Runtime {
 
 parameter_types! {
 	pub const MaxBytesInChannelId: u32 = 24;
+	pub const MaxBytesInCommonKey: u32 = 128;
+
 }
 
 
 impl pallet_submessage::Config for Runtime {
 	type Event = Event;
 	type MaxBytesInChannelId = MaxBytesInChannelId;
+	type MaxBytesInCommonKey = MaxBytesInCommonKey;
 }
 
 // Create the runtime by composing the FRAME pallets that were previously configured.
