@@ -3,6 +3,7 @@
 const { ApiPromise, WsProvider } = require('@polkadot/api');
 const { readFileSync } = require('fs');
 const { Keyring } = require('@polkadot/keyring');
+const { decodeAddress } = require('@polkadot/util-crypto');
 const { u8aToHex } = require('@polkadot/util');
 
 
@@ -17,6 +18,15 @@ const rpc = {
       type: "u32",
     }
   }
+}
+
+// REF: https://stackoverflow.com/questions/66998019/get-public-key-from-ss58-address
+function getPublicKeyInHex(address) {
+  return u8aToHex(getPublicKey(address));
+}
+
+function getPublicKey(address) {
+  return decodeAddress(address);
 }
 
 async function main() {
@@ -41,7 +51,8 @@ async function main() {
   const alice = keyring.createFromUri('//Alice');
   const bob = keyring.createFromUri('//Bob');
   console.log("alice.address", alice.address);
-  //console.log("alice.publicKey", alice.publicKey);
+  console.log("alice.publicKey", u8aToHex(alice.publicKey));
+  console.log("alice.hexPublicKey", getPublicKeyInHex(alice.address));
 
   let channelId = "V1StGXR8_Z5jdHi6B-myT";
   let accountCommonKeys = new Map([
