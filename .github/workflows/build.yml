@@ -42,6 +42,10 @@ jobs:
       #  run: >
       #    pushd node &&
       #    cargo check --features=runtime-benchmarks --release
+      
+      - name: Test
+        run: |
+          cargo +nightly test
 
       - name: Build
         run: |
