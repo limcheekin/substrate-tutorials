@@ -55,5 +55,8 @@ impl pallet_simple_map::Config for Test {
 
 // Build genesis storage according to the mock runtime.
 pub fn new_test_ext() -> sp_io::TestExternalities {
-	system::GenesisConfig::default().build_storage::<Test>().unwrap().into()
+	let mut ext: sp_io::TestExternalities = system::GenesisConfig::default().build_storage::<Test>().unwrap().into();
+	// REF: https://substrate.stackexchange.com/questions/1103/problem-running-assert-last-event-in-tests-rs
+	ext.execute_with(|| System::set_block_number(1)); // Substrate chains do not emit events when the block number is 0.
+	ext
 }
